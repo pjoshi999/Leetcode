@@ -7,7 +7,7 @@ public:
         }
         vector<int> res;
         for(int i=0; i<nums2.size(); i++) {
-            if(s.count(nums2[i]) > 0) {
+            if(s.count(nums2[i])) {
                 s.erase(nums2[i]);
                 res.push_back(nums2[i]);
             }
