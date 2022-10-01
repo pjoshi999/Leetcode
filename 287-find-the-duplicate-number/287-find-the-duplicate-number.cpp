@@ -8,9 +8,9 @@ public:
         int res;
         for(auto it=mp.begin(); it!=mp.end(); it++) {
             if(it->second != 1) {
-                res = it->first;
+                return res = it->first;
             }
         }
-        return res;
+        return -1;
     }
 };
