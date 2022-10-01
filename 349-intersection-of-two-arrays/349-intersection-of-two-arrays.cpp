@@ -5,13 +5,15 @@ public:
         for(int i=0; i<nums1.size(); i++) {
             s.insert(nums1[i]);
         }
-        vector<int> res;
+        int count=0;
+        vector<int> v;
         for(int i=0; i<nums2.size(); i++) {
-            if(s.count(nums2[i])) {
-                s.erase(nums2[i]);
-                res.push_back(nums2[i]);
+            int key = nums2[i];
+            if(s.find(key) != s.end()) {
+                v.push_back(key);
+                s.erase(key);
             }
         }
-        return res;
+        return v;
     }
 };
