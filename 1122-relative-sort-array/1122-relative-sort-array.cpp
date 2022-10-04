@@ -22,7 +22,6 @@ public:
                 it->second-=1;
             }
         }
-        sort(v.begin(), v.end());
         ans.insert( ans.end(), v.begin(), v.end() );
         return ans;
     }
