@@ -21,7 +21,9 @@ public:
             //     v.push_back(it->first);
             //     it->second-=1;
             // }
-            vector<int> v(it->second, it->first);
+            
+            //Alternative of above while statements;
+            vector<int> v(it->second, it->first); 
             ans.insert( ans.end(), v.begin(), v.end() );
         }
         return ans;
