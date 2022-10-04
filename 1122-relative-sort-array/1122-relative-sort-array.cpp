@@ -17,12 +17,13 @@ public:
         }
         
         for(auto it=mp.begin(); it!=mp.end(); it++) {
-            while(it->second > 0 ) {
-                v.push_back(it->first);
-                it->second-=1;
-            }
+            // while(it->second > 0 ) {
+            //     v.push_back(it->first);
+            //     it->second-=1;
+            // }
+            vector<int> v(it->second, it->first);
+            ans.insert( ans.end(), v.begin(), v.end() );
         }
-        ans.insert( ans.end(), v.begin(), v.end() );
         return ans;
     }
 };
