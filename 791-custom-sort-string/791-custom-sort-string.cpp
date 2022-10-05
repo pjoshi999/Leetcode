@@ -13,7 +13,7 @@ public:
                 int count = temp->second;
                 string str(count, temp->first); 
                 ans += str;
-                mp.erase(temp);
+                mp.erase(key);
             }
         }
         
