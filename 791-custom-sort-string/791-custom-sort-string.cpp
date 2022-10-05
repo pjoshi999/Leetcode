@@ -8,12 +8,11 @@ public:
         }
         for(int i=0; i<order.length(); i++) {
             int key = order[i];
-            if(mp.find(key) != mp.end()) {
-                auto temp = mp.find(key);
-                int count = temp->second;
-                string str(count, temp->first); 
-                ans += str;
-                mp.erase(temp);
+            auto temp = mp.find(key);
+            while(mp.find(key) != mp.end() && temp->second > 0) {
+                
+                ans += temp->first;
+                temp->second-=1;
             }
         }
         
