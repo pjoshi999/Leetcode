@@ -3,21 +3,22 @@ public:
     string customSortString(string order, string s) {
         map<char, int> mp;
         string ans;
-        for(auto x: s) {
-            mp[x]++;
+        for(int i=0; i<s.length(); i++) {
+            mp[s[i]]++;
         }
-        for(auto x: order) {
-            if(mp.find(x) != mp.end()) {
-                auto temp = mp.find(x);
+        for(int i=0; i<order.length(); i++) {
+            int key = order[i];
+            if(mp.find(key) != mp.end()) {
+                auto temp = mp.find(key);
                 int count = temp->second;
-                string str(count, x); 
+                string str(count, temp->first); 
                 ans += str;
-                mp.erase(x);
+                mp.erase(temp);
             }
         }
         
-        for(auto x: mp) {
-            string str(x.second, x.first);
+        for(auto it=mp.begin(); it!=mp.end(); it++) {
+            string str(it->second, it->first);
             ans += str;
         }
         return ans;
