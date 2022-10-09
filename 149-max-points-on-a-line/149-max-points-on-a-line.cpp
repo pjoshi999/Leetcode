@@ -9,11 +9,13 @@ public:
         for(int i=0; i<n; i++) {
             for(int j=i+1; j<n; j++) {
                 int count = 2;
-                for(int k=0; k<n && k!=i && k!=j; k++) {
-                    int slope1 = (points[j][1]-points[i][1]) * (points[k][0] - points[i][0]);
-                    int slope2 = (points[j][0]-points[i][0]) * (points[k][1] - points[i][1]);
-                    if(slope1 == slope2) {
-                        count++;
+                for(int k=0; k<n; k++) {
+                    if(k!=i && k!=j) {
+                        int slope1 = (points[j][1]-points[i][1]) * (points[k][0] - points[i][0]);
+                        int slope2 = (points[j][0]-points[i][0]) * (points[k][1] - points[i][1]);
+                        if(slope1 == slope2) {
+                            count++;
+                        }
                     }
                 }
                 maxi = max(maxi, count);
