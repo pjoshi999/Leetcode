@@ -1,24 +1,46 @@
 class Solution {
 public:
     int maxPoints(vector<vector<int>>& points) {
-        int n = points.size();
+        int n= points.size();
         if(n<=2) {
             return n;
         }
-        int maxi = 2;
+        
+        int maxi = 0;
         for(int i=0; i<n; i++) {
-            for(int j=i+1; j<n; j++) {
-                int count = 2;
-                for(int k=0; k<n; k++) {
-                    if(k!=i && k!=j) {
-                        int slope1 = (points[j][1]-points[i][1]) * (points[k][0] - points[i][0]);
-                        int slope2 = (points[j][0]-points[i][0]) * (points[k][1] - points[i][1]);
-                        if(slope1 == slope2) {
-                            count++;
-                        }
-                    }
+            unordered_map<double, int> mp;
+            int duplicate = 0;
+            double slope = 0.0;
+            for(int j=0; j<n; j++) {
+                int x1= points[i][0];
+                int y1= points[i][1];
+                int x2= points[j][0];
+                int y2= points[j][1];
+                int dx = x2-x1;
+                int dy = y2-y1;
+                
+                if(dx == 0 && dy == 0) {
+                    duplicate++;
+                    continue;
                 }
-                maxi = max(maxi, count);
+                
+                //dx is 0 means slope is infinity
+                if(dx==0) {
+                    slope = INT_MAX;
+                }
+                else {
+                    slope = (double)dy / (double)dx;
+                }
+                
+                mp[slope]++;
+            }
+            if(mp.size() == 0) {
+                maxi = duplicate;
+            }
+            else {
+                for(auto x: mp) {
+                    maxi = max(maxi, x.second + duplicate);   
+                }
             }
         }
         return maxi;
