@@ -22,5 +22,3 @@ public:
         return res;
     }
 };
-
-//string(1, i+'a'): it's a string constructor that takes a count and a character, and creates a string by duplicating that character count times. In the case above, we just need one character
