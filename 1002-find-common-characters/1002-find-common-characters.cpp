@@ -13,10 +13,15 @@ public:
                 common[i] = min(common[i], count[i]);
             }
         }
-        
+        string str = "";
         for(int i=0; i<26; i++) {
-            for(int j=0; j<common[i]; j++) {
-                res.push_back(string(1, i+'a'));
+            if(common[i] > 0) {
+                int range = common[i];
+                while(range--) {
+                    str += char(i+'a');
+                    res.push_back(str);
+                    str="";
+                }
             }
         }
         return res;
