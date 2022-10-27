@@ -13,17 +13,14 @@ public:
                 common[i] = min(common[i], count[i]);
             }
         }
-        string str = "";
+        
         for(int i=0; i<26; i++) {
-            if(common[i] > 0) {
-                int range = common[i];
-                while(range--) {
-                    str += char(i+'a');
-                    res.push_back(str);
-                    str="";
-                }
+            for(int j=0; j<common[i]; j++) {
+                res.push_back(string(1, i+'a'));
             }
         }
         return res;
     }
 };
+
+//string(1, i+'a'): it's a string constructor that takes a count and a character, and creates a string by duplicating that character count times. In the case above, we just need one character
