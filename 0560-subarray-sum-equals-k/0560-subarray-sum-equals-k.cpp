@@ -12,12 +12,7 @@ public:
             if(mp.find(currSum-k) != mp.end()) {
                 res += mp[currSum-k];
             }
-            if(mp.find(currSum) != mp.end()) {
-                mp[currSum]++;
-            }
-            else {
-                mp[currSum] = 1;
-            }
+            mp[currSum]++;
         }
         return res;
     }
