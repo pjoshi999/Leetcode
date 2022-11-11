@@ -1,19 +1,19 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        vector<int> str1(26, 0);
-        vector<int> str2(26, 0);
-        
         if(s.size() != t.size()) return false;
         
+        int count[26] = {0};
         for(int i=0; i<s.size(); i++) {
-            str1[s[i]-'a']++;
-            str2[t[i]-'a']++;
+            count[s[i]-'a']++;
+            count[t[i]-'a']--;
         }
         
-        if(str1==str2) {
-            return true;
+        for(int i=0; i<26; i++) {
+            if(count[i] > 0) {
+                return false;
+            }
         }
-        return false;
+        return true;
     }
 };
