@@ -15,8 +15,6 @@ public:
             }
         }
         
-        if(count == count1) 
-            return true;
-        return false;
+        return count == count1;
     }
 };
