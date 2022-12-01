@@ -2,19 +2,19 @@ class Solution {
 public:
     bool halvesAreAlike(string s) {
         int count = 0;
-        int count1 = 0;
-        for(int i=0; i<s.size()/2; i++) {
-            if(s[i] == 'a' || s[i] == 'A' || s[i] == 'e' || s[i] == 'E' || s[i] == 'i' || s[i] == 'I' || s[i] == 'o' || s[i] == 'O' || s[i] == 'u' || s[i] == 'U') {
-                count++;
+        for(int i=0; i<s.size(); i++) {
+            s[i]=tolower(s[i]);
+            if(i < s.size()/2) {
+                if(s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u') {
+                    count++;
+                }
+            }
+            else {
+                if(s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u') {
+                    count--;
+                }
             }
         }
-        
-        for(int i=s.size()/2; i<s.size(); i++) {
-            if(s[i] == 'a' || s[i] == 'A' || s[i] == 'e' || s[i] == 'E' || s[i] == 'i' || s[i] == 'I' || s[i] == 'o' || s[i] == 'O' || s[i] == 'u' || s[i] == 'U') {
-                count1++;
-            }
-        }
-        
-        return count == count1;
+        return count == 0;     // true if count is 0 and false if count is not equal to 0
     }
 };
