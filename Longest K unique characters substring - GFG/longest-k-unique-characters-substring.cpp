@@ -16,7 +16,7 @@ class Solution{
         string str;
         int res = -1;
         unordered_map<char, int> mp;
-        while(j < s.size()) {
+        while(j<s.size()) {
             mp[s[j]]++;
             if(mp.size() < k) {
                 j++;
