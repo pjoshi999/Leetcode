@@ -23,7 +23,7 @@ public:
 	        if(arr[0] <= arr[mid]) {
 	            start = mid + 1;
 	        }
-	        if(arr[n-1] >= arr[mid]) {
+	        if(arr[mid] <= arr[n-1]) {
 	            end = mid - 1;
 	        }   
 	    }
