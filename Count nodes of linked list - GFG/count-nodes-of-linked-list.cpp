@@ -24,6 +24,15 @@ struct Node
     Node(int x) {  data = x;  next = NULL; }
 }; */
 
+int count(struct Node* &head) {
+    if(head == NULL) {
+        return 0;
+    }
+    else {
+        return 1 + count(head->next);
+    }
+}
+
 class Solution
 {
     public:
@@ -31,14 +40,7 @@ class Solution
     int getCount(struct Node* head){
     
         //Code here
-        Node* curr = head;
-        int count = 0;
-        
-        while(curr != NULL) {
-            count++;
-            curr = curr->next;
-        }
-        return count;
+        return count(head);
     }
 };
     
