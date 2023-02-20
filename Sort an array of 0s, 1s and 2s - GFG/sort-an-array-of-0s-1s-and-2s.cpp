@@ -39,7 +39,7 @@ class Solution
     }
     
     // t.c. = O(n);
-    // s.c. = O(n);
+    // s.c. = O(1);
     
 };
 
