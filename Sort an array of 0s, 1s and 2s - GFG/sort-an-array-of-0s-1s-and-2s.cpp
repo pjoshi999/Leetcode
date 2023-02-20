@@ -8,32 +8,24 @@ using namespace std;
 class Solution
 {
     public:
-    void sort012(int a[], int n)
+    void sort012(int arr[], int n)
     {
         // code here 
-        int count0 = 0;
-        int count1 = 0;
-        int count2 = 0;
-        for(int i=0; i<n; i++) {
-            if(a[i] == 0) {
-                count0++;
+        int l=0;
+        int m=0;
+        int h=n-1;
+        while(m <= h) {
+            if(arr[m] == 0) {
+                swap(arr[m], arr[l]);
+                l++;
+                m++;
             }
-            if(a[i] == 1) {
-                count1++;
+            else if(arr[m] == 1) {
+                m++;
             }
-            if(a[i] == 2) {
-                count2++;
-            }
-        }
-        for(int i=0; i<n; i++) {
-            if(i < count0) {
-                a[i] = 0;
-            }
-            else if(i >= count0 && i<count0+count1) {
-                a[i] = 1;
-            }
-            else {
-                a[i] = 2;
+            else if(arr[m] == 2) {
+                swap(arr[m], arr[h]);
+                h--;
             }
         }
     }
