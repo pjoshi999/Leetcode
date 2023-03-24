@@ -15,10 +15,20 @@ class Solution{
     // k : find kth smallest element and return using this function
     int kthSmallest(int arr[], int l, int r, int k) {
         //code here
-        sort(arr, arr+r-l+1);
-        // for(int i=0; i<r-l+1; i++) cout<<arr[i]<<" ";
-        // cout<<endl;
-        return arr[k-1];
+        priority_queue<int, vector<int>, greater<int>> pq;
+        for(int i=l; i<=r; i++) {
+            pq.push(arr[i]);
+        }
+        // while(!pq.empty()) {
+        //     cout<<pq.top()<<" ";
+        //     pq.pop();
+        // }
+        int temp = 0;
+        while(!pq.empty() && temp<k-1) {
+            pq.pop();
+            temp++;
+        }
+        return pq.top();
     }
 };
 
