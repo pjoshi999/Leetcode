@@ -4,11 +4,11 @@ public:
         int n = nums.size();
         map<int, int> mp;
         for(int i=0; i<nums.size(); i++) {
-            nums[i] = (nums[i]%value + value) % value;  // + value) % value indicates that negative remainder is converted to positive remainder
+            // nums[i] = (nums[i]%value + value) % value;  // + value) % value indicates that negative remainder is converted to positive remainder
 
             // Same as above line
-            // if(nums[i] < 0) nums[i] = nums[i]%value + value;
-            // else nums[i] = nums[i]%value;
+            if(nums[i] < 0) nums[i] = (nums[i]%value + value) % value;
+            else nums[i] = nums[i]%value;
         }
         for(int i=0; i<nums.size(); i++) {
             mp[nums[i]]++;
