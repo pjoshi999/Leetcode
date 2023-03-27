@@ -1,8 +1,16 @@
 class Solution {
 public:
     bool canConstruct(string ransomNote, string magazine) {
-        sort(magazine.begin(), magazine.end());
-        sort(ransomNote.begin(), ransomNote.end());        
-        return includes(magazine.begin(), magazine.end(), ransomNote.begin(), ransomNote.end());
+        vector<int> v(26, 0);
+        for(int i=0; i<magazine.size(); i++) {
+            v[magazine[i]-'a']++;
+        }
+        for(int i=0; i<ransomNote.size(); i++) {
+            if(v[ransomNote[i] - 'a'] == 0) {
+                return false;
+            }
+            v[ransomNote[i] - 'a']--;
+        }
+        return true;
     }
 };
