@@ -11,22 +11,20 @@
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        set<int> s;
-        while(head != NULL) {
-            s.insert(head->val);
-            head = head->next;
+        if(head == NULL || head->next == NULL) {
+            return head;
         }
-        // for(auto it: s) {
-        //     cout<<it<<endl;
-        // }
-        ListNode* newList = new ListNode(-1);
-        ListNode* curr = newList;
-        for(auto it: s) {
-            ListNode* newNode = new ListNode(it);
-            curr->next = newNode;
-            curr = curr->next;
+        ListNode* curr = head;
+        while(curr != NULL && curr->next != NULL) {
+            if(curr->val == curr->next->val) {
+                ListNode* temp = curr->next;
+                curr->next = temp->next;
+                delete temp;
+            }
+            else {
+                curr = curr->next;
+            }
         }
-        curr->next = NULL;
-        return newList->next;
+        return head;
     }
 };
