@@ -11,23 +11,23 @@ class Solution
     int countSubstring(string S)
     {
         // code here
+        unordered_map<int, int> mp;
         int res = 0;
+        int sum = 0;
         for(int i=0; i<S.size(); i++) {
-            string str = "";
-            int low = 0;
-            int up = 0;
-            for(int j=i; j<S.size(); j++) {
-                str += S[j];
-                if(S[j] >= 65 && S[j] <= 90) {
-                    up++;
-                }
-                else if(S[j] >= 97 && S[j] <= 127) {
-                    low++;
-                }
-                if(low == up) {
-                    res++;
-                }
+            if(isupper(S[i])) {
+                sum++;
             }
+            else {
+                sum--;
+            }
+            if(sum == 0) {
+                res++;
+            }
+            if(mp.find(sum) != mp.end()) {
+                res += mp[sum];
+            }
+            mp[sum]++;
         }
         return res;
     }
