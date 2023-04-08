@@ -12,15 +12,15 @@ class Solution
     public:
     //Function to delete middle element of a stack.
     
-    void del(stack<int> &s, int i, int n) {
-        if(i > (n/2)-1) {
+    void del(stack<int> &s, int i) {
+        if(i == 0) {
             s.pop();
             return;
         }
         int ele = s.top();
         s.pop();
         // cout<<"ele:"<<ele<<" top:"<<s.top()<<endl;
-        del(s, i+1, n);
+        del(s, i-1);
         s.push(ele);
     }
     
@@ -30,7 +30,8 @@ class Solution
         // if(s.size() == (s.size()/2)+1) {
         //     return;
         // }
-        del(s, 0, sizeOfStack);
+        int i = sizeOfStack/2;
+        del(s, i);
     }
 };
 
