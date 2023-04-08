@@ -11,31 +11,26 @@ class Solution
 {
     public:
     //Function to delete middle element of a stack.
+    
+    void del(stack<int> &s, int i, int n) {
+        if(i > (n/2)-1) {
+            s.pop();
+            return;
+        }
+        int ele = s.top();
+        s.pop();
+        // cout<<"ele:"<<ele<<" top:"<<s.top()<<endl;
+        del(s, i+1, n);
+        s.push(ele);
+    }
+    
     void deleteMid(stack<int>&s, int sizeOfStack)
     {
         // code here..
         // if(s.size() == (s.size()/2)+1) {
         //     return;
         // }
-        vector<int> v;
-        int count = 0;
-        while(count != sizeOfStack/2 +1) {
-            count++;
-            v.push_back(s.top());
-            s.pop();
-        }
-        // for(auto it: v) {
-        //     cout<<it<<" ";
-        // }
-        // cout<<endl;
-     
-        // while(!s.empty()) {
-        //     cout<<s.top()<<" ";
-        //     s.pop();
-        // }
-        for(int i=v.size()-2; i>=0; i--) {
-            s.push(v[i]);
-        }
+        del(s, 0, sizeOfStack);
     }
 };
 
