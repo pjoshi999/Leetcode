@@ -11,14 +11,14 @@ class Solution{
 
     // avoid space at the starting of the string in "move disk....."
     
-    void solve(int N, int a, int b, int c, long long int &count) {
+    void solve(int N, int a, int c, int b, long long int &count) {
         if(N == 0) {
             return;
         }
-        solve(N-1, a, c, b, count);
+        solve(N-1, a, b, c, count);
         count++;
-        cout<<"move disk "<<N<<" from rod "<<a<<" to rod "<<b<<endl;
-        solve(N-1, c, b, a, count);
+        cout<<"move disk "<<N<<" from rod "<<a<<" to rod "<<c<<endl;
+        solve(N-1, b, c, a, count);
     }
     
     long long toh(int N, int from, int to, int aux) {
