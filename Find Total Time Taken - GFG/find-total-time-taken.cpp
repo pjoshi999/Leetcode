@@ -32,16 +32,18 @@ class Solution {
   public:
     int totalTime(int n, vector<int> &arr, vector<int> &time) {
         // code here
-        unordered_map<int, int> mp;
-        int count = 0;
-        for(int i=0; i<arr.size(); i++) {
-            if(mp.find(arr[i]) != mp.end()) {
-                count = max(count, mp[arr[i]] + time[arr[i]-1]);
+        unordered_set<int> s;
+        int res = 0;
+        for(int i=0; i<n; i++) {
+            if(s.find(arr[i]) != s.end()) {
+                res += time[arr[i]-1];
             }
-            mp[arr[i]] = count;
-            count++;
+            else {
+                s.insert(arr[i]);
+                res++;
+            }
         }
-        return count-1;
+        return res-1;
     }
 };
 
