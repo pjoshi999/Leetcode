@@ -6,19 +6,19 @@ using namespace std;
 // } Driver Code Ends
 class Solution{
 public:
-    void solve(string in, string op, vector<string> &res) {
-        if(in.size() == 0) {
+    void solve(string ip, string op, vector<string> &res) {
+        if(ip.size() == 0) {
             res.push_back(op);
             return;
         }
         string op1 = op;
         string op2 = op;
         op1.push_back(' ');
-        op1.push_back(in[0]);
-        op2.push_back(in[0]);
-        in.erase(in.begin()+0);
-        solve(in, op1, res);
-        solve(in, op2, res);
+        op1.push_back(ip[0]);
+        op2.push_back(ip[0]);
+        ip.erase(ip.begin()+0);
+        solve(ip, op1, res);
+        solve(ip, op2, res);
     }
 
     vector<string> permutation(string S){
@@ -27,8 +27,8 @@ public:
         string ip = S;
         string op = "";
         op += ip[0];
-        S.erase(S.begin() + 0);
-        solve(S, op, res);
+        ip.erase(ip.begin() + 0);
+        solve(ip, op, res);
         return res;
     }
 };
