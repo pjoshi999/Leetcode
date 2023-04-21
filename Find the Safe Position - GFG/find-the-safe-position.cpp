@@ -5,22 +5,22 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-    void solve(vector<int> &v, int start, int k){
-        if(v.size()==1){             //Return last standing person
+    void solve(vector<int> &v, int start, int k) {
+        if(v.size() == 1) {
             return;
         }
-        start+=k;                    //Position of person form start which is to be eliminated
-        int s = v.size();
-        start%=s;                    //Taking remainder so that index does not go above the size of array
-        v.erase(v.begin()+start);      //Eliminating the person
-        solve(v,start,k);             //Recusive call
+        start += k;
+        int temp = v.size();
+        start %= temp;
+        // start = (start+k)%v.size();
+        v.erase(v.begin()+start);
+        solve(v, start, k);
         return;
     }
   
     int safePos(int n, int k) {
         // code here
         vector<int> v(n);
-        int res  = 0;
         for(int i=1; i<=n; i++) {
             v[i-1] = i;
         }
