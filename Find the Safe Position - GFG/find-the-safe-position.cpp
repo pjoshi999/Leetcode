@@ -9,10 +9,10 @@ class Solution {
         if(v.size() == 1) {
             return;
         }
-        start += k;
-        int temp = v.size();
-        start %= temp;
-        // start = (start+k)%v.size();
+        // start += k;
+        // int temp = v.size();
+        // start %= temp;
+        start = (start+k)%v.size();
         v.erase(v.begin()+start);
         solve(v, start, k);
         return;
