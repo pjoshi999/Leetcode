@@ -21,9 +21,9 @@ public:
             solve(N-1, ones, zeros+1, op2, res);
         }
         else {
-            string op1 = op;
-            op1.push_back('1');
-            solve(N-1, ones+1, zeros, op1, res);
+            string op3 = op;
+            op3.push_back('1');
+            solve(N-1, ones+1, zeros, op3, res);
         }
     }
 
