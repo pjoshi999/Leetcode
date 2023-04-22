@@ -12,8 +12,8 @@ class Solution {
         if(N == 0) {
             return;
         }
-        solve(N-1, res);
         res += N*N*N;
+        solve(N-1, res);
     }
   
     long long sumOfSeries(long long N) {
