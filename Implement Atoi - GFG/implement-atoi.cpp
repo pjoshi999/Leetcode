@@ -10,27 +10,36 @@ using namespace std;
 class Solution{
   public:
     /*You are required to complete this method */
+    void solve(string str, int i, int &num, bool flag) {
+        if(i == str.size()) {
+            if(flag) {
+                num = 0 - num;
+            }
+            return;
+        }
+        if(str[i] >= 65 && str[i] <= 90 || str[i] >= 97 && str[i] <= 122 || str[i] == 43 || str[i] == 45 && i > 0) {
+            num = -1;
+            return;
+        }
+        if(str[i] == 43 || str[i] == 45 && i == 0) {
+            if(flag == false) flag = true;
+            else {
+                num = -1;
+                return;
+            }
+        }
+        else {
+            int rem = str[i]-'0';
+            num = num*10 + rem;
+        } 
+        solve(str, i+1, num, flag);
+    }
+    
     int atoi(string str) {
         //Your code here
         int num = 0;
         bool flag = false;
-        for(int i = 0; i < str.size(); i++) {
-            if(str[i] >= 65 && str[i] <= 90 || str[i] >= 97 && str[i] <= 122 || str[i] == 43 || str[i] == 45 && i > 0) {
-                return -1;
-            }
-            if(str[i] == 43 || str[i] == 45 && i == 0) {
-                if(flag == false) flag = true;
-                else return -1;
-                
-            }
-            else {
-                int rem = str[i]-'0';
-                num = num*10 + rem;
-            }
-        }
-        if(flag) {
-            num = 0 - num;
-        }
+        solve(str, 0, num, flag);
         return num;
     }
 };
