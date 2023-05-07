@@ -12,11 +12,16 @@ class Solution{
         int modulo(string s,int m)
         {
             //code here
-            int k = 0;
-            for (char c : s) {
-                k = (k * 2 % m + (c - '0') % m) % m;
+            int res = s[s.size()-1]-'0';
+            int temp = 1;
+            for(int i=s.size()-2; i>=0; i--) {
+                int rem = s[i]-'0';
+                temp *= 2;
+                res += temp * rem;
+                temp %= m;
+                // cout<<"res: "<<res<<" temp: "<<temp<<endl;
             }
-            return k;
+            return res%m;
         }
 };
 
