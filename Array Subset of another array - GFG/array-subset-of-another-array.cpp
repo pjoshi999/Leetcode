@@ -34,12 +34,14 @@ string isSubset(int a1[], int a2[], int n, int m) {
         mp[a1[i]]++;
     }
     for(int i=0; i<m; i++) {
-        if(mp.find(a2[i]) == mp.end()) {
-            return "No";
+        if(mp.find(a2[i]) != mp.end()) {
+            mp[a2[i]]--;
+            if(mp[a2[i]] == 0) {
+                mp.erase(a2[i]);
+            }
         }
-        mp[a2[i]]--;
-        if(mp[a2[i]] == 0) {
-            mp.erase(a2[i]);
+        else {
+            return "No";
         }
     }
     return "Yes";
